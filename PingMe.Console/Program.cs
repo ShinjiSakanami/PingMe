@@ -1,5 +1,4 @@
 ﻿using PingMe.Library;
-using System;
 using System.Net.NetworkInformation;
 using System.Threading;
 
@@ -9,8 +8,6 @@ namespace PingMe.Console
     {
         static PingSender pingSender;
         static int pingCount;
-        static int ticker;
-        static Timer timer;
 
         static void Main(string[] args)
         {
@@ -20,20 +17,22 @@ namespace PingMe.Console
             pingSender.PingCompleted += PingSender_PingCompleted;
             Log("Start ping test");
             Log();
-            timer = new Timer(SendPing, null, 1000, Timeout.Infinite);
-
-            PingDone();
+            SendPings(4);
             WaitForInput();
         }
 
-        private static void SendPing(object state)
+        private static void SendPings(int count)
         {
-            pingSender.Send();
+            do
+            {
+                pingSender.Send();
+                Thread.Sleep(1000);
+            } while (pingCount <= count);
+            PingDone();
         }
 
         private static void PingDone()
         {
-            pingCount = 0;
             PingResultList results = pingSender.Results;
             Log();
             Log("Statistiques Ping pour " + pingSender.HostName + ":");
