@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingMe", "PingMe\PingMe.csproj", "{E39DD812-7C19-4B3E-9710-DEC3C1945BDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingMe.Library", "PingMe.Library\PingMe.Library.csproj", "{2B9BAF28-DAAF-41F4-99BF-7ACD92A3D8AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingMe.Console", "PingMe.Console\PingMe.Console.csproj", "{5620E4FA-7FB9-4F66-ADFB-8A74FD0D39E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E39DD812-7C19-4B3E-9710-DEC3C1945BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E39DD812-7C19-4B3E-9710-DEC3C1945BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E39DD812-7C19-4B3E-9710-DEC3C1945BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E39DD812-7C19-4B3E-9710-DEC3C1945BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B9BAF28-DAAF-41F4-99BF-7ACD92A3D8AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B9BAF28-DAAF-41F4-99BF-7ACD92A3D8AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B9BAF28-DAAF-41F4-99BF-7ACD92A3D8AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B9BAF28-DAAF-41F4-99BF-7ACD92A3D8AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5620E4FA-7FB9-4F66-ADFB-8A74FD0D39E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5620E4FA-7FB9-4F66-ADFB-8A74FD0D39E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5620E4FA-7FB9-4F66-ADFB-8A74FD0D39E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5620E4FA-7FB9-4F66-ADFB-8A74FD0D39E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
