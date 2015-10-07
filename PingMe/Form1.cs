@@ -1,5 +1,4 @@
-﻿using PingMe.Library;
-using System;
+﻿using System;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
@@ -81,13 +80,11 @@ namespace PingMe
 
             if (reply.Status > 0)
             {
-                //tbLog.AppendText("[" + date + "] " + StatusError(reply.Status) + "\n");
                 chart.Series["Time"].Points.AddXY(history.SendPackets, 0);
                 tableResults.Rows.Add(date, StatusError(reply.Status));
             }
             else
             {
-                //tbLog.AppendText("[" + date + "] From " + reply.Address + " : octets=" + reply.Buffer.Length + " time=" + reply.RoundtripTime + "ms TTL=" + reply.Options.Ttl + "\n");
                 tableResults.Rows.Add(date, reply.Address, reply.RoundtripTime, reply.Buffer.Length, reply.Options.Ttl);
                 tbTimeMin.Text = history.TimeMin.ToString() + "ms";
                 tbLastTimeMin.Text = results.TimeMin.ToString() + "ms";
@@ -120,7 +117,6 @@ namespace PingMe
         private void ResetTexts()
         {
             lblStatus.Text = "";
-            //tbLog.Text = "";
             tableResults.Rows.Clear();
             tbElapsedTime.Text = TimeSpan.FromSeconds(0).ToString();
             tbTimeMin.Text = "0ms";
@@ -199,7 +195,7 @@ namespace PingMe
                     text = "Timed Out";
                     break;
                 default:
-                    text = "Unknown error: " + status;
+                    text = status.ToString();
                     break;
             }
             return text;

@@ -1,5 +1,4 @@
-﻿using PingMe.Library;
-using System.Net.NetworkInformation;
+﻿using System.Net.NetworkInformation;
 using System.Threading;
 
 namespace PingMe.Console
