@@ -63,9 +63,9 @@ namespace PingMe.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow {
+        internal static System.Drawing.Bitmap arrow_down {
             get {
-                object obj = ResourceManager.GetObject("arrow", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow_down", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,10 +73,50 @@ namespace PingMe.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow2 {
+        internal static System.Drawing.Bitmap arrow_right {
             get {
-                object obj = ResourceManager.GetObject("arrow2", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        /// </summary>
+        internal static System.Drawing.Icon status_b {
+            get {
+                object obj = ResourceManager.GetObject("status_b", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        /// </summary>
+        internal static System.Drawing.Icon status_g {
+            get {
+                object obj = ResourceManager.GetObject("status_g", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        /// </summary>
+        internal static System.Drawing.Icon status_m {
+            get {
+                object obj = ResourceManager.GetObject("status_m", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        /// </summary>
+        internal static System.Drawing.Icon status_s {
+            get {
+                object obj = ResourceManager.GetObject("status_s", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

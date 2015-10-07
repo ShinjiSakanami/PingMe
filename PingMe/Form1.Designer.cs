@@ -451,7 +451,7 @@
             this.btnPanel3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPanel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPanel3.Image = global::PingMe.Properties.Resources.arrow2;
+            this.btnPanel3.Image = global::PingMe.Properties.Resources.arrow_right;
             this.btnPanel3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPanel3.Location = new System.Drawing.Point(0, 266);
             this.btnPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -516,7 +516,7 @@
             this.btnPanel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPanel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPanel2.Image = global::PingMe.Properties.Resources.arrow2;
+            this.btnPanel2.Image = global::PingMe.Properties.Resources.arrow_right;
             this.btnPanel2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPanel2.Location = new System.Drawing.Point(0, 133);
             this.btnPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -531,7 +531,7 @@
             this.btnPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPanel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPanel1.Image = global::PingMe.Properties.Resources.arrow2;
+            this.btnPanel1.Image = global::PingMe.Properties.Resources.arrow_right;
             this.btnPanel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPanel1.Location = new System.Drawing.Point(0, 0);
             this.btnPanel1.Margin = new System.Windows.Forms.Padding(0);

@@ -23,6 +23,7 @@ namespace PingMe
                 pingTimer.Stop();
                 btnStart.Text = "Start";
                 tbHostName.ReadOnly = false;
+                Icon = Properties.Resources.status_s;
             }
             else
             {
@@ -54,6 +55,7 @@ namespace PingMe
             btnPanel2.Tag = panel2;
             btnPanel3.Tag = panel3;
             Height -= expHeight * 3;
+            Icon = Properties.Resources.status_s;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -143,31 +145,37 @@ namespace PingMe
             {
                 lblStatus.Text = "No connection";
                 lblStatus.ForeColor = System.Drawing.Color.Red;
+                Icon = Properties.Resources.status_b;
             }
             else if (lostPacketsRatio > 75)
             {
                 lblStatus.Text = "Very bad";
                 lblStatus.ForeColor = System.Drawing.Color.Red;
+                Icon = Properties.Resources.status_b;
             }
             else if (lostPacketsRatio > 50)
             {
                 lblStatus.Text = "Bad";
-                lblStatus.ForeColor = System.Drawing.Color.Red;
+                lblStatus.ForeColor = System.Drawing.Color.Orange;
+                Icon = Properties.Resources.status_m;
             }
             else if (lostPacketsRatio > 25)
             {
                 lblStatus.Text = "Average";
                 lblStatus.ForeColor = System.Drawing.Color.Orange;
+                Icon = Properties.Resources.status_m;
             }
             else if (lostPacketsRatio > 0)
             {
                 lblStatus.Text = "Good";
                 lblStatus.ForeColor = System.Drawing.Color.Green;
+                Icon = Properties.Resources.status_g;
             }
             else
             {
                 lblStatus.Text = "Excellent";
                 lblStatus.ForeColor = System.Drawing.Color.Green;
+                Icon = Properties.Resources.status_g;
             }
         }
 
@@ -209,13 +217,13 @@ namespace PingMe
             {
                 pnl.Height = expHeight;
                 Height += expHeight;
-                btn.Image = Properties.Resources.arrow;
+                btn.Image = Properties.Resources.arrow_down;
             }
             else
             {
                 pnl.Height = 0;
                 Height -= expHeight;
-                btn.Image = Properties.Resources.arrow2;
+                btn.Image = Properties.Resources.arrow_right;
             }
         }
     }

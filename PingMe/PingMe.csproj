@@ -55,6 +55,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\PingHistory.cs" />
     <Compile Include="Utils\PingResults.cs" />
     <Compile Include="Utils\PingSender.cs" />
@@ -63,14 +68,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,11 +85,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\arrow.png" />
-    <None Include="Resources\arrow2.png" />
-    <Content Include="Resources\status_0.png" />
-    <Content Include="Resources\status_1.png" />
-    <Content Include="Resources\status_2.png" />
+    <Content Include="Resources\arrow_down.png" />
+    <Content Include="Resources\status_b.ico" />
+    <Content Include="Resources\status_g.ico" />
+    <Content Include="Resources\status_m.ico" />
+    <Content Include="Resources\status_s.ico" />
+    <None Include="Resources\arrow_right.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
