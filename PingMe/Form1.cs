@@ -191,16 +191,67 @@ namespace PingMe
                     text = "Success";
                     break;
                 case IPStatus.DestinationNetworkUnreachable:
-                    text = "Destination Network unreachable";
+                    text = "Destination network unreachable";
                     break;
                 case IPStatus.DestinationHostUnreachable:
-                    text = "Destination Host Unreachable";
+                    text = "Destination host unreachable";
                     break;
                 case IPStatus.DestinationProtocolUnreachable:
-                    text = "Destination Protocol Unreachable";
+                    text = "Destination protocol unreachable or prohibited";
+                    break;
+                case IPStatus.DestinationPortUnreachable:
+                    text = "Destination port unreachable";
+                    break;
+                case IPStatus.NoResources:
+                    text = "No resources";
+                    break;
+                case IPStatus.BadOption:
+                    text = "Bad option";
+                    break;
+                case IPStatus.HardwareError:
+                    text = "Hardware error";
+                    break;
+                case IPStatus.PacketTooBig:
+                    text = "Packet too big";
                     break;
                 case IPStatus.TimedOut:
-                    text = "Timed Out";
+                    text = "Timed out";
+                    break;
+                case IPStatus.BadRoute:
+                    text = "Bad route";
+                    break;
+                case IPStatus.TtlExpired:
+                    text = "TTL expired";
+                    break;
+                case IPStatus.TtlReassemblyTimeExceeded:
+                    text = "TTL reassembly time exceeded";
+                    break;
+                case IPStatus.ParameterProblem:
+                    text = "Parameter problem";
+                    break;
+                case IPStatus.SourceQuench:
+                    text = "Source quench";
+                    break;
+                case IPStatus.BadDestination:
+                    text = "Bad destination";
+                    break;
+                case IPStatus.DestinationUnreachable:
+                    text = "Destination unreachable";
+                    break;
+                case IPStatus.TimeExceeded:
+                    text = "Time exceeded";
+                    break;
+                case IPStatus.BadHeader:
+                    text = "Bad header";
+                    break;
+                case IPStatus.UnrecognizedNextHeader:
+                    text = "Unrecognized next header";
+                    break;
+                case IPStatus.IcmpError:
+                    text = "ICMP error";
+                    break;
+                case IPStatus.DestinationScopeMismatch:
+                    text = "Destination scope mismatch";
                     break;
                 default:
                     text = status.ToString();
