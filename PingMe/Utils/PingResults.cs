@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 
@@ -74,7 +75,7 @@ namespace PingMe
         {
             get
             {
-                return this._results.Count(p => p.Status > 0);
+                return this._results.Count(p => (p.Status != 0));
             }
         }
 
@@ -82,7 +83,7 @@ namespace PingMe
         {
             get
             {
-                return this.LostPackets * 100 / this.SendPackets;
+                return Convert.ToDouble(this.LostPackets) / Convert.ToDouble(this.SendPackets); 
             }
         }
 

@@ -1,4 +1,6 @@
-﻿namespace PingMe
+﻿using System;
+
+namespace PingMe
 {
     public class PingHistory
     {
@@ -26,7 +28,7 @@
         {
             get
             {
-                return this.LostPackets * 100 / this.SendPackets;
+                return Convert.ToDouble(this.LostPackets) / Convert.ToDouble(this.SendPackets);
             }
         }
 

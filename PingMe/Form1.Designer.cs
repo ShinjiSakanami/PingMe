@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnStart = new System.Windows.Forms.Button();
             this.tbHostName = new System.Windows.Forms.TextBox();
             this.lblHostName = new System.Windows.Forms.Label();
@@ -47,7 +48,7 @@
             this.lblReceivedPackets = new System.Windows.Forms.Label();
             this.lblLostPackets = new System.Windows.Forms.Label();
             this.lblStability = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblStabilityStatus = new System.Windows.Forms.Label();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tbLastSendPackets = new System.Windows.Forms.TextBox();
             this.tbLastTimeMin = new System.Windows.Forms.TextBox();
@@ -61,24 +62,33 @@
             this.lblElapsedTime = new System.Windows.Forms.Label();
             this.pingTimer = new System.Windows.Forms.Timer(this.components);
             this.tableResults = new System.Windows.Forms.DataGridView();
-            this.tableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnPanel3 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBuffer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTimeToLive = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnPanel2 = new System.Windows.Forms.Button();
+            this.btnPanel3 = new System.Windows.Forms.Button();
             this.btnPanel1 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyIconMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblPing = new System.Windows.Forms.Label();
+            this.lblPingStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableResults)).BeginInit();
             this.tableLayout.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.notifyIconMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -95,15 +105,15 @@
             // 
             this.tbHostName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbHostName.Location = new System.Drawing.Point(286, 30);
+            this.tbHostName.Location = new System.Drawing.Point(342, 30);
             this.tbHostName.Name = "tbHostName";
-            this.tbHostName.Size = new System.Drawing.Size(166, 20);
+            this.tbHostName.Size = new System.Drawing.Size(110, 20);
             this.tbHostName.TabIndex = 1;
             // 
             // lblHostName
             // 
             this.lblHostName.AutoSize = true;
-            this.lblHostName.Location = new System.Drawing.Point(283, 12);
+            this.lblHostName.Location = new System.Drawing.Point(339, 12);
             this.lblHostName.Name = "lblHostName";
             this.lblHostName.Size = new System.Drawing.Size(63, 13);
             this.lblHostName.TabIndex = 2;
@@ -220,49 +230,49 @@
             this.lblStability.TabIndex = 16;
             this.lblStability.Text = "Stability:";
             // 
-            // lblStatus
+            // lblStabilityStatus
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(139, 30);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(124, 20);
-            this.lblStatus.TabIndex = 17;
-            this.lblStatus.Text = "No connection";
+            this.lblStabilityStatus.AutoSize = true;
+            this.lblStabilityStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStabilityStatus.Location = new System.Drawing.Point(207, 7);
+            this.lblStabilityStatus.Name = "lblStabilityStatus";
+            this.lblStabilityStatus.Size = new System.Drawing.Size(124, 20);
+            this.lblStabilityStatus.TabIndex = 17;
+            this.lblStabilityStatus.Text = "No connection";
             // 
             // chart
             // 
             this.chart.BackColor = System.Drawing.Color.Transparent;
             this.chart.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea3.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
-            chartArea3.AxisX.IsMarginVisible = false;
-            chartArea3.AxisX.LabelAutoFitMaxFontSize = 6;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea3.AxisX.Maximum = 20D;
-            chartArea3.AxisX.Minimum = 1D;
-            chartArea3.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Silver;
-            chartArea3.AxisX.ScaleView.Zoomable = false;
-            chartArea3.AxisY.LabelAutoFitMaxFontSize = 6;
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea3.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea3.BorderColor = System.Drawing.Color.Transparent;
-            chartArea3.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea3);
+            chartArea1.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
+            chartArea1.AxisX.IsMarginVisible = false;
+            chartArea1.AxisX.LabelAutoFitMaxFontSize = 6;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisX.Maximum = 20D;
+            chartArea1.AxisX.Minimum = 1D;
+            chartArea1.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisX.ScaleView.Zoomable = false;
+            chartArea1.AxisY.LabelAutoFitMaxFontSize = 6;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea1.BorderColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart.Location = new System.Drawing.Point(0, 0);
             this.chart.Name = "chart";
-            series3.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.Percent50;
-            series3.BorderColor = System.Drawing.Color.CornflowerBlue;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
-            series3.Color = System.Drawing.Color.LightSteelBlue;
-            series3.EmptyPointStyle.MarkerBorderColor = System.Drawing.Color.Black;
-            series3.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
-            series3.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
-            series3.IsVisibleInLegend = false;
-            series3.Name = "Time";
-            this.chart.Series.Add(series3);
+            series1.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.Percent50;
+            series1.BorderColor = System.Drawing.Color.CornflowerBlue;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            series1.Color = System.Drawing.Color.LightSteelBlue;
+            series1.EmptyPointStyle.MarkerBorderColor = System.Drawing.Color.Black;
+            series1.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
+            series1.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
+            series1.IsVisibleInLegend = false;
+            series1.Name = "Time";
+            this.chart.Series.Add(series1);
             this.chart.Size = new System.Drawing.Size(438, 108);
             this.chart.TabIndex = 18;
             this.chart.TabStop = false;
@@ -378,99 +388,6 @@
             this.tableResults.Size = new System.Drawing.Size(438, 108);
             this.tableResults.TabIndex = 29;
             // 
-            // tableLayout
-            // 
-            this.tableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayout.AutoSize = true;
-            this.tableLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayout.ColumnCount = 1;
-            this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayout.Controls.Add(this.panel2, 0, 3);
-            this.tableLayout.Controls.Add(this.btnPanel2, 0, 2);
-            this.tableLayout.Controls.Add(this.btnPanel3, 0, 4);
-            this.tableLayout.Controls.Add(this.btnPanel1, 0, 0);
-            this.tableLayout.Controls.Add(this.panel3, 0, 5);
-            this.tableLayout.Controls.Add(this.panel1, 0, 1);
-            this.tableLayout.Location = new System.Drawing.Point(12, 58);
-            this.tableLayout.Name = "tableLayout";
-            this.tableLayout.RowCount = 6;
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayout.Size = new System.Drawing.Size(440, 399);
-            this.tableLayout.TabIndex = 30;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.tbLastTimeMin);
-            this.panel1.Controls.Add(this.tbLastTimeMax);
-            this.panel1.Controls.Add(this.tbLastTimeAverage);
-            this.panel1.Controls.Add(this.tbTimeMin);
-            this.panel1.Controls.Add(this.tbTimeMax);
-            this.panel1.Controls.Add(this.tbTimeAverage);
-            this.panel1.Controls.Add(this.tbElapsedTime);
-            this.panel1.Controls.Add(this.tbStartTime);
-            this.panel1.Controls.Add(this.lblTimeAverage);
-            this.panel1.Controls.Add(this.lblElapsedTime);
-            this.panel1.Controls.Add(this.tbLostPackets);
-            this.panel1.Controls.Add(this.tbLastLostPackets);
-            this.panel1.Controls.Add(this.lblStartDate);
-            this.panel1.Controls.Add(this.lblTimeMax);
-            this.panel1.Controls.Add(this.lblReceivedPackets);
-            this.panel1.Controls.Add(this.lblTimeMin);
-            this.panel1.Controls.Add(this.tbLastReceivedPackets);
-            this.panel1.Controls.Add(this.tbReceivedPackets);
-            this.panel1.Controls.Add(this.tbLastSendPackets);
-            this.panel1.Controls.Add(this.tbSendPackets);
-            this.panel1.Controls.Add(this.lblSendPackets);
-            this.panel1.Controls.Add(this.lblLostPackets);
-            this.panel1.Location = new System.Drawing.Point(0, 23);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(440, 110);
-            this.panel1.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.chart);
-            this.panel2.Location = new System.Drawing.Point(0, 156);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(440, 110);
-            this.panel2.TabIndex = 2;
-            // 
-            // btnPanel3
-            // 
-            this.btnPanel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPanel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPanel3.Image = global::PingMe.Properties.Resources.arrow_right;
-            this.btnPanel3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPanel3.Location = new System.Drawing.Point(0, 266);
-            this.btnPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.btnPanel3.Name = "btnPanel3";
-            this.btnPanel3.Size = new System.Drawing.Size(440, 23);
-            this.btnPanel3.TabIndex = 4;
-            this.btnPanel3.Text = "Pings";
-            this.btnPanel3.Click += new System.EventHandler(this.btnPanel_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.tableResults);
-            this.panel3.Location = new System.Drawing.Point(0, 289);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(440, 110);
-            this.panel3.TabIndex = 6;
-            // 
             // colDate
             // 
             this.colDate.HeaderText = "Time";
@@ -511,6 +428,43 @@
             this.colTimeToLive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colTimeToLive.Width = 50;
             // 
+            // tableLayout
+            // 
+            this.tableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayout.AutoSize = true;
+            this.tableLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayout.ColumnCount = 1;
+            this.tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayout.Controls.Add(this.panel2, 0, 3);
+            this.tableLayout.Controls.Add(this.btnPanel2, 0, 2);
+            this.tableLayout.Controls.Add(this.btnPanel3, 0, 4);
+            this.tableLayout.Controls.Add(this.btnPanel1, 0, 0);
+            this.tableLayout.Controls.Add(this.panel3, 0, 5);
+            this.tableLayout.Controls.Add(this.panel1, 0, 1);
+            this.tableLayout.Location = new System.Drawing.Point(12, 58);
+            this.tableLayout.Name = "tableLayout";
+            this.tableLayout.RowCount = 6;
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayout.Size = new System.Drawing.Size(440, 399);
+            this.tableLayout.TabIndex = 30;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.chart);
+            this.panel2.Location = new System.Drawing.Point(0, 156);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(440, 110);
+            this.panel2.TabIndex = 2;
+            // 
             // btnPanel2
             // 
             this.btnPanel2.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -524,7 +478,24 @@
             this.btnPanel2.Size = new System.Drawing.Size(440, 23);
             this.btnPanel2.TabIndex = 3;
             this.btnPanel2.Text = "Graph";
+            this.btnPanel2.UseVisualStyleBackColor = false;
             this.btnPanel2.Click += new System.EventHandler(this.btnPanel_Click);
+            // 
+            // btnPanel3
+            // 
+            this.btnPanel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPanel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPanel3.Image = global::PingMe.Properties.Resources.arrow_right;
+            this.btnPanel3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPanel3.Location = new System.Drawing.Point(0, 266);
+            this.btnPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPanel3.Name = "btnPanel3";
+            this.btnPanel3.Size = new System.Drawing.Size(440, 23);
+            this.btnPanel3.TabIndex = 4;
+            this.btnPanel3.Text = "Pings";
+            this.btnPanel3.UseVisualStyleBackColor = false;
+            this.btnPanel3.Click += new System.EventHandler(this.btnPanel_Click);
             // 
             // btnPanel1
             // 
@@ -539,7 +510,111 @@
             this.btnPanel1.Size = new System.Drawing.Size(440, 23);
             this.btnPanel1.TabIndex = 5;
             this.btnPanel1.Text = "Stats";
+            this.btnPanel1.UseVisualStyleBackColor = false;
             this.btnPanel1.Click += new System.EventHandler(this.btnPanel_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.tableResults);
+            this.panel3.Location = new System.Drawing.Point(0, 289);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(440, 110);
+            this.panel3.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.tbLastTimeMin);
+            this.panel1.Controls.Add(this.tbLastTimeMax);
+            this.panel1.Controls.Add(this.tbLastTimeAverage);
+            this.panel1.Controls.Add(this.tbTimeMin);
+            this.panel1.Controls.Add(this.tbTimeMax);
+            this.panel1.Controls.Add(this.tbTimeAverage);
+            this.panel1.Controls.Add(this.tbElapsedTime);
+            this.panel1.Controls.Add(this.tbStartTime);
+            this.panel1.Controls.Add(this.lblTimeAverage);
+            this.panel1.Controls.Add(this.lblElapsedTime);
+            this.panel1.Controls.Add(this.tbLostPackets);
+            this.panel1.Controls.Add(this.tbLastLostPackets);
+            this.panel1.Controls.Add(this.lblStartDate);
+            this.panel1.Controls.Add(this.lblTimeMax);
+            this.panel1.Controls.Add(this.lblReceivedPackets);
+            this.panel1.Controls.Add(this.lblTimeMin);
+            this.panel1.Controls.Add(this.tbLastReceivedPackets);
+            this.panel1.Controls.Add(this.tbReceivedPackets);
+            this.panel1.Controls.Add(this.tbLastSendPackets);
+            this.panel1.Controls.Add(this.tbSendPackets);
+            this.panel1.Controls.Add(this.lblSendPackets);
+            this.panel1.Controls.Add(this.lblLostPackets);
+            this.panel1.Location = new System.Drawing.Point(0, 23);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(440, 110);
+            this.panel1.TabIndex = 1;
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.ContextMenuStrip = this.notifyIconMenu;
+            this.notifyIcon.Text = "PingMe: Inactive";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            // 
+            // notifyIconMenu
+            // 
+            this.notifyIconMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.openToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.notifyIconMenu.Name = "notifyIconMenu";
+            this.notifyIconMenu.Size = new System.Drawing.Size(104, 76);
+            // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.startToolStripMenuItem.Text = "Start";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // lblPing
+            // 
+            this.lblPing.AutoSize = true;
+            this.lblPing.Location = new System.Drawing.Point(139, 33);
+            this.lblPing.Name = "lblPing";
+            this.lblPing.Size = new System.Drawing.Size(31, 13);
+            this.lblPing.TabIndex = 31;
+            this.lblPing.Text = "Ping:";
+            // 
+            // lblPingStatus
+            // 
+            this.lblPingStatus.AutoSize = true;
+            this.lblPingStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPingStatus.Location = new System.Drawing.Point(207, 28);
+            this.lblPingStatus.Name = "lblPingStatus";
+            this.lblPingStatus.Size = new System.Drawing.Size(65, 20);
+            this.lblPingStatus.TabIndex = 32;
+            this.lblPingStatus.Text = "Infinite";
             // 
             // Form1
             // 
@@ -547,24 +622,29 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 473);
+            this.Controls.Add(this.lblPingStatus);
+            this.Controls.Add(this.lblPing);
             this.Controls.Add(this.tableLayout);
-            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.lblStabilityStatus);
             this.Controls.Add(this.lblStability);
             this.Controls.Add(this.lblHostName);
             this.Controls.Add(this.tbHostName);
             this.Controls.Add(this.btnStart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "PingMe";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableResults)).EndInit();
             this.tableLayout.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.notifyIconMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -588,7 +668,7 @@
         private System.Windows.Forms.Label lblReceivedPackets;
         private System.Windows.Forms.Label lblLostPackets;
         private System.Windows.Forms.Label lblStability;
-        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lblStabilityStatus;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.TextBox tbLastSendPackets;
         private System.Windows.Forms.TextBox tbLastTimeMin;
@@ -614,6 +694,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBuffer;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTimeToLive;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip notifyIconMenu;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
+        private System.Windows.Forms.Label lblPing;
+        private System.Windows.Forms.Label lblPingStatus;
     }
 }
 
