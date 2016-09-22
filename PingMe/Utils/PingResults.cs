@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.NetworkInformation;
 
 namespace PingMe
@@ -27,7 +26,16 @@ namespace PingMe
         {
             get
             {
-                return this._results.Where(p => p.Status == 0).Sum(p => p.Time);
+                long total = 0;
+                for (int i = 0; i < this._results.Count; i++)
+                {
+                    PingResult result = this._results[i];
+                    if (result.Status == 0)
+                    {
+                        total += result.Time;
+                    }
+                }
+                return total;
             }
         }
 
@@ -35,7 +43,19 @@ namespace PingMe
         {
             get
             {
-                return this._results.Where(p => p.Status == 0).Max(p => p.Time);
+                long max = 0;
+                for (int i = 0; i < this._results.Count; i++)
+                {
+                    PingResult result = this._results[i];
+                    if (result.Status == 0)
+                    {
+                        if (result.Time > max)
+                        {
+                            max = result.Time;
+                        }
+                    }
+                }
+                return max;
             }
         }
 
@@ -43,7 +63,19 @@ namespace PingMe
         {
             get
             {
-                return this._results.Where(p => p.Status == 0).Min(p => p.Time);
+                long min = 0;
+                for (int i = 0; i < this._results.Count; i++)
+                {
+                    PingResult result = this._results[i];
+                    if (result.Status == 0)
+                    {
+                        if (result.Time < min)
+                        {
+                            min = result.Time;
+                        }
+                    }
+                }
+                return min;
             }
         }
 
@@ -51,7 +83,14 @@ namespace PingMe
         {
             get
             {
-                return this._results.Where(p => p.Status == 0).Average(p => p.Time);
+                if (this.ReceivedPackets > 0)
+                {
+                    return Convert.ToDouble(this.TimeTotal) / Convert.ToDouble(this.ReceivedPackets);
+                }
+                else
+                {
+                    return 0.0;
+                }
             }
         }
 
@@ -59,7 +98,7 @@ namespace PingMe
         {
             get
             {
-                return this._results.Count();
+                return this._results.Count;
             }
         }
 
@@ -67,7 +106,16 @@ namespace PingMe
         {
             get
             {
-                return this._results.Count(p => p.Status == 0);
+                int count = 0;
+                for (int i = 0; i < this._results.Count; i++)
+                {
+                    PingResult result = this._results[i];
+                    if (result.Status == 0)
+                    {
+                        count++;
+                    }
+                }
+                return count;
             }
         }
 
@@ -75,7 +123,16 @@ namespace PingMe
         {
             get
             {
-                return this._results.Count(p => (p.Status != 0));
+                int count = 0;
+                for (int i = 0; i < this._results.Count; i++)
+                {
+                    PingResult result = this._results[i];
+                    if (result.Status != 0)
+                    {
+                        count++;
+                    }
+                }
+                return count;
             }
         }
 
@@ -83,7 +140,14 @@ namespace PingMe
         {
             get
             {
-                return Convert.ToDouble(this.LostPackets) / Convert.ToDouble(this.SendPackets); 
+                if (this.SendPackets > 0)
+                {
+                    return Convert.ToDouble(this.LostPackets) / Convert.ToDouble(this.SendPackets);
+                }
+                else
+                {
+                    return 0.0;
+                }
             }
         }
 
@@ -108,7 +172,7 @@ namespace PingMe
 
         public void Add(IPStatus status, long time)
         {
-            Add(new PingResult(status, time));
+            this.Add(new PingResult(status, time));
         }
 
         public void Clear()

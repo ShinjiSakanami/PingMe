@@ -111,14 +111,8 @@ namespace PingMe
                 }
                 else
                 {
-                    this.tableResults.Rows.Add(date, reply.Address, reply.RoundtripTime, reply.Buffer.Length, reply.Options.Ttl);
-                    this.tbTimeMin.Text = history.TimeMin.ToString() + "ms";
-                    this.tbLastTimeMin.Text = results.TimeMin.ToString() + "ms";
-                    this.tbTimeMax.Text = history.TimeMax.ToString() + "ms";
-                    this.tbLastTimeMax.Text = results.TimeMax.ToString() + "ms";
-                    this.tbTimeAverage.Text = history.TimeAverage.ToString("F0") + "ms";
-                    this.tbLastTimeAverage.Text = results.TimeAverage.ToString("F0") + "ms";
                     this.chart.Series["Time"].Points.AddXY(history.SendPackets, reply.RoundtripTime);
+                    this.tableResults.Rows.Add(date, reply.Address, reply.RoundtripTime, reply.Buffer.Length, reply.Options.Ttl);
                 }
             }
             else
@@ -137,6 +131,12 @@ namespace PingMe
             {
                 this.tableResults.Rows.RemoveAt(0);
             }
+            this.tbTimeMin.Text = history.TimeMin.ToString() + "ms";
+            this.tbLastTimeMin.Text = results.TimeMin.ToString() + "ms";
+            this.tbTimeMax.Text = history.TimeMax.ToString() + "ms";
+            this.tbLastTimeMax.Text = results.TimeMax.ToString() + "ms";
+            this.tbTimeAverage.Text = history.TimeAverage.ToString("F0") + "ms";
+            this.tbLastTimeAverage.Text = results.TimeAverage.ToString("F0") + "ms";
             this.tbSendPackets.Text = history.SendPackets.ToString();
             this.tbLastSendPackets.Text = results.SendPackets.ToString();
             this.tbReceivedPackets.Text = history.ReceivedPackets.ToString();
@@ -144,7 +144,7 @@ namespace PingMe
             this.tbLostPackets.Text = history.LostPackets.ToString() + " (" + (history.LostPacketsRatio * 100).ToString("F0") + "%)";
             this.tbLastLostPackets.Text = results.LostPackets.ToString() + " (" + (results.LostPacketsRatio * 100).ToString("F0") + "%)";
             this.DisplayStabilityStatus(results.LostPacketsRatio);
-            this.DisplayPingStatus(results.TimeAverage);
+            this.DisplayPingStatus(results.TimeAverage, results.LostPacketsRatio);
         }
 
         private void ResetTexts()
@@ -171,32 +171,40 @@ namespace PingMe
             this.chart.ChartAreas["ChartArea1"].RecalculateAxesScale();
         }
         
-        private void DisplayPingStatus(double ping)
+        private void DisplayPingStatus(double ping, double lostPackets)
         {
-            if (ping > 500)
+            if (lostPackets >= 1)
             {
-                this.lblPingStatus.Text = "Very bad";
+                this.lblPingStatus.Text = "No connection";
                 this.lblPingStatus.ForeColor = Color.Red;
-            }
-            else if (ping > 250)
-            {
-                this.lblPingStatus.Text = "Bad";
-                this.lblPingStatus.ForeColor = Color.Red;
-            }
-            else if (ping > 100)
-            {
-                this.lblPingStatus.Text = "Average";
-                this.lblPingStatus.ForeColor = Color.Orange;
-            }
-            else if (ping > 50)
-            {
-                this.lblPingStatus.Text = "Good";
-                this.lblPingStatus.ForeColor = Color.Green;
             }
             else
             {
-                this.lblPingStatus.Text = "Excellent";
-                this.lblPingStatus.ForeColor = Color.Green;
+                if (ping > 500)
+                {
+                    this.lblPingStatus.Text = "Very bad";
+                    this.lblPingStatus.ForeColor = Color.Red;
+                }
+                else if (ping > 250)
+                {
+                    this.lblPingStatus.Text = "Bad";
+                    this.lblPingStatus.ForeColor = Color.Red;
+                }
+                else if (ping > 100)
+                {
+                    this.lblPingStatus.Text = "Average";
+                    this.lblPingStatus.ForeColor = Color.Orange;
+                }
+                else if (ping > 50)
+                {
+                    this.lblPingStatus.Text = "Good";
+                    this.lblPingStatus.ForeColor = Color.Green;
+                }
+                else
+                {
+                    this.lblPingStatus.Text = "Excellent";
+                    this.lblPingStatus.ForeColor = Color.Green;
+                }
             }
         }
 

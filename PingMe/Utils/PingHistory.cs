@@ -14,7 +14,14 @@ namespace PingMe
         {
             get
             {
-                return this.TimeTotal / this.ReceivedPackets;
+                if (this.ReceivedPackets > 0)
+                {
+                    return Convert.ToDouble(this.TimeTotal) / Convert.ToDouble(this.ReceivedPackets);
+                }
+                else
+                {
+                    return 0.0;
+                }
             }
         }
 
@@ -28,7 +35,14 @@ namespace PingMe
         {
             get
             {
-                return Convert.ToDouble(this.LostPackets) / Convert.ToDouble(this.SendPackets);
+                if (this.SendPackets > 0)
+                {
+                    return Convert.ToDouble(this.LostPackets) / Convert.ToDouble(this.SendPackets);
+                }
+                else
+                {
+                    return 0.0;
+                }
             }
         }
 
